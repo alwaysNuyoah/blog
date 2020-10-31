@@ -1,0 +1,9 @@
+{
+    "db": {
+        "user": "lisi",
+        "host": "172.96.217.34",
+        "port": "27017",
+        "name": "admin",
+        "pwd": "lisi"
+    }
+}

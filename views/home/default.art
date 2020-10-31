@@ -1,0 +1,58 @@
+{{extend './common/layout.art'}}
+
+{{block 'link'}}
+	<link rel="stylesheet" href="/home/css/index.css">
+{{/block}}
+
+{{block 'main'}}
+	{{include './common/header.art'}}
+	<!-- 文章列表开始 -->
+	<ul class="list w1100">
+		{{each result.records}}
+			<li class="{{$index%2==0?'fl':'fr'}}">
+				<a href="/home/article?id={{@$value._id}}" class="thumbnail">
+					<img src="{{$value.cover}}">
+				</a>
+				<div class="content">
+					<a class="article-title" href="/home/article?id={{@$value._id}}">{{$value.title}}</a>
+					<div class="article-info">
+						<span class="author">{{$value.author.username}}</span>
+						<span>{{dateFormat($value.publishDate,'yyyy-mm-dd')}}</span>
+					</div>
+					<!--.replace()方法  参数1：要替换的字符  参数2：替换成的字符-->
+					<!--用正则表达式匹配内容当中的html标记/<[^>]+>/g，并将其替换成空字符串''-->
+					<div class="brief">
+						<!--/<>/表示     以<开始    以>结束  -->
+						<!--[^>]表示     <>中间不能有>    ^>即除了>-->
+						<!--+表示     <>内部字符至少有一个 -->
+						<!--在内容当中有很多个html标签  用g进行全局匹配 -->
+						<!--  .substr   此方法可对字符串进行截取-->
+						<!-- 参数1：截取的开始位置（0表示从开始位置进行截取）-->
+						<!-- 参数2：要截取的字符数量-->
+						<!-- 字符串拼接 +'...'  代表省略-->
+						<!-- @  对内容进行原文输出   此时内容里的&nbsp由空格 代替   即可显示真正的空格-->
+
+						{{@$value.content.replace(/<[^>]+>/g,'').substr(0,90)+'...'}}
+					</div>
+				</div>
+			</li>
+		{{/each}}
+	</ul>
+	<!-- 文章列表结束 -->
+
+	<!-- 分页开始 -->
+	<div class="page w1100">
+		<!--result.page代表当前页的页码-->
+		{{if result.page>1}}
+		<a href="/home/?page={{result.page-1}}">上一页</a>
+		{{/if}}
+		{{each result.display}}
+		<a href="/home/?page={{$value}}" class="{{$value==result.page?'active':''}}">{{$value}}</a>
+		{{/each}}
+		<!--result.pages代表总页数-->
+		{{if result.page<result.pages}}
+		<a href="/home/?page={{result.page-0+1}}">下一页</a>
+		{{/if}}
+	</div>
+	<!-- 分页结束 -->
+{{/block}}

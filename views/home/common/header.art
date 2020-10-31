@@ -1,0 +1,20 @@
+<!-- 头部框架开始 -->
+<div class="header">
+    <div class="w1100">
+        <!-- 网站logo开始 -->
+        <img class="logo" src="images/logo.jpg" alt="生命不息，代码不止">
+        <span>生命不息 代码不止</span>
+        <!-- 网站logo结束 -->
+        <!-- 网站导航开始 -->
+        <ul class="navigation fr">
+            <li>
+                <a class="{{currentLink=='home'?'active':''}}" href="/home/">首页</a>
+            </li>
+            <li>
+                <a class="{{currentLink!='home'?'active':''}}" href="/admin/login">登录</a>
+            </li>
+        </ul>
+        <!-- 网站导航结束 -->
+    </div>
+</div>
+<!-- 头部框架结束 -->

@@ -1,0 +1,22 @@
+<!-- 侧边栏 -->
+<div class="aside fl">
+    <ul class="menu list-unstyled">
+        <li>
+            <a class="item {{currentLink=='user'?'active':''}}" href="/admin/user">
+                <span class="glyphicon glyphicon-user"></span>
+                用户管理
+            </a>
+        </li>
+        <li>
+            <a class="item {{currentLink=='article'?'active':''}}" href="/admin/article">
+                <span class="glyphicon glyphicon-th-list"></span>
+                文章管理
+            </a>
+        </li>
+    </ul>
+    <div class="cprt">
+        <!--Powered by <a href="javascript:;"  target="_blank">用一朵花开的时间</a>-->
+        Powered by <a href="javascript:;">用一朵花开的时间</a>
+    </div>
+</div>
+        <!-- 侧边栏 -->
