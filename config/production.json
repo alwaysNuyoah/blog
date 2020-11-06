@@ -4,6 +4,6 @@
         "host": "172.96.217.34",
         "port": "27017",
         "name": "admin",
-        "pwd": "lisi"
+        "pwd": "APP_PASSWORD"
     }
 }
